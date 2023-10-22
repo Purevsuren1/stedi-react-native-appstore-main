@@ -10,7 +10,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import PopupModal from '../components/PopupModal';
 import ManuallyCounter from '../components/ManuallyCounter';
-
+import React, { Component } from 'react';
+import { BleManager } from 'react-native-ble-plx';
 
 export default function Counter(props) {
  const [completionCount, setCompletionCount] = useState(0);
@@ -31,6 +32,37 @@ export default function Counter(props) {
   };
   getUserName();
 },[]);
+class BleExample extends Component {
+  constructor() {
+    super();
+
+    this.manager = new BleManager();
+    this.device = null;
+  }
+
+  componentDidMount() {
+    this.scanAndConnect();
+  }
+
+  scanAndConnect() {
+    this.manager.startDeviceScan(null, null, (error, device) => {
+      if (error) {
+        console.error('Error scanning for devices:', error);
+        return;
+      }
+
+      // Here, you can check for a specific device using its name, ID, or other criteria.
+      if (device.name === 'YourBLEDeviceName') {
+        this.manager.stopDeviceScan();
+        this.device = device;
+        this.connectToDevice();
+      }
+    });
+  }
+
+
+}
+
 
  useEffect(()=>{
   if (currentScreen == 'counter'){

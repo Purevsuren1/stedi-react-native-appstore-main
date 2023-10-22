@@ -1,24 +1,36 @@
 {
   "expo": {
     "name": "STEDI App",
-    "plugins":[
+    "plugins": [
+      [
+        "@config-plugins/react-native-ble-plx",
+        {
+          "isBackgroundEnabled": true,
+          "modes": [
+            "peripheral",
+            "central"
+          ],
+          "bluetoothAlwaysPermission": "Allow $STEDI to connect to bluetooth devices",
+          "bluetoothPeripheralPermission": "Allow $STEDI to connect to bluetooth devices"
+        }
+      ],
       [
         "expo-build-properties",
         {
-          "ios":{
-            "deploymentTarget":"13.0"
+          "ios": {
+            "deploymentTarget": "13.0"
           }
         }
       ]
     ],
-    "splash":{
-      "image":"./image/icon-img.png"
+    "splash": {
+      "image": "./image/icon-img.png"
     },
     "slug": "stedi-app",
     "icon": "./image/icon-img.png",
     "extra": {
       "eas": {
-        "projectId": "6c98bbd5-98a2-482c-a01d-04a045165bcb"
+        "projectId": "f858d7d5-7d33-412d-8aa1-2d570739a3c1"
       }
     },
     "ios": {
@@ -29,7 +41,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./image/icon-img.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT"
+      ]
     }
   }
 }

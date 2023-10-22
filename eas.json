@@ -3,13 +3,12 @@
     "version": ">= 2.1.0",
     "promptToConfigurePushNotifications": false
   },
+  
   "build": {
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "ios": {
-        "resourceClass": "m-medium"
-      }
+      "credentialsSource":"local"
     },
     "preview": {
       "distribution": "internal",
@@ -26,4 +25,9 @@
   "submit": {
     "production": {}
   }
-}
+  
+		
+   
+  }
+
+

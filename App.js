@@ -6,6 +6,7 @@ import OnboardingScreen from './screens/OnboardingScreen';
 import Login from './screens/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
 
 
 const Stack = createNativeStackNavigator();
@@ -95,12 +96,7 @@ const App = () =>{
   )
 }
 
-
  export default App;
-
-
-
-
 
 
 
