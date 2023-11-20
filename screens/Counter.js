@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image, Share, Linking} from 'react-native';
 import Speedometer, {Background, Arc, Needle, Progress, Marks, Indicator,DangerPath
 } from 'react-native-cool-speedometer';
@@ -10,7 +10,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import PopupModal from '../components/PopupModal';
 import ManuallyCounter from '../components/ManuallyCounter';
-import React, { Component } from 'react';
 import { BleManager } from 'react-native-ble-plx';
 
 export default function Counter(props) {

@@ -34,7 +34,10 @@
       }
     },
     "ios": {
-      "bundleIdentifier": "com.scmurdock.stediapp"
+      "bundleIdentifier": "me.stedi",
+      "runtimeVersion": {
+        "policy": "sdkVersion"
+      }
     },
     "android": {
       "package": "com.scmurdock.stediapp",
