@@ -11,8 +11,8 @@ import * as ExpoDevice from "expo-device";
 
 import base64 from "react-native-base64";
 
-const HEART_RATE_UUID = "0000180d-0000-1000-8000-00805f9b34fb";
-const HEART_RATE_CHARACTERISTIC = "00002a37-0000-1000-8000-00805f9b34fb";
+const HEART_RATE_UUID = "00000dba-0000-0e30-0b00-0e0000000000";
+const HEART_RATE_CHARACTERISTIC = "00001212-0000-1000-8000-00805f9b34fb";
 
 function isDuplicteDevice(devices, nextDevice) {
   return devices.findIndex((device) => nextDevice.id === device.id) > -1;
@@ -88,7 +88,7 @@ function useBLE() {
       if (error) {
         console.log(error);
       }
-      if (device && device.name?.includes("CorSense")) {
+      if (device && device.name?.includes("Purevsuren-STEDI")) {
         setAllDevices((prevState) => {
           if (!isDuplicteDevice(prevState, device)) {
             return [...prevState, device];
@@ -127,18 +127,14 @@ function useBLE() {
       return -1;
     }
 
-    const rawData = base64.decode(characteristic.value);
-    let innerHeartRate = -1;
+    console.log("characteristic.value: "+characteristic.value);
+ const rawData = base64.decode(characteristic.value);
+ console.log("rawData:", rawData);
+ let innerHeartRate = rawData.charCodeAt(0);
 
     const firstBitValue = Number(rawData) & 0x01;
 
-    if (firstBitValue === 0) {
-      innerHeartRate = rawData[1].charCodeAt(0);
-    } else {
-      innerHeartRate =
-        Number(rawData[1].charCodeAt(0) << 8) +
-        Number(rawData[2].charCodeAt(2));
-    }
+  
 
     setHeartRate(innerHeartRate);
   };
